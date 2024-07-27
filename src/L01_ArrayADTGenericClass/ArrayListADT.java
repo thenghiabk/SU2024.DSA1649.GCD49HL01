@@ -2,17 +2,17 @@ package L01_ArrayADTGenericClass;
 
 import java.util.Arrays;
 
-public class ArrayListADT implements AbstractList {
+public class ArrayListADT<T> implements AbstractList<T> {
     private static final int DEFAULT_CAPACITY = 5;
-    private int[] elements;
+    private T[] elements;
     private int size = 0;
 
     public ArrayListADT(){
-        elements = new int[DEFAULT_CAPACITY];
+        elements = (T[]) new Object[DEFAULT_CAPACITY];
     }
 
     @Override
-    public boolean add(int element) {
+    public boolean add(T element) {
         if (size == elements.length){
             elements = Arrays.copyOf(elements, elements.length * 2);
         }
@@ -23,13 +23,13 @@ public class ArrayListADT implements AbstractList {
     }
 
     @Override
-    public int remove(int index) {
+    public T remove(int index) {
         if(index < 0 ||  index >= size)
         {
             throw new IndexOutOfBoundsException("Index out of bound: " + index + " out of size.");
         }
 
-        int oldElement = elements[index];
+        T oldElement = elements[index];
 
 
         // shifting
@@ -38,7 +38,7 @@ public class ArrayListADT implements AbstractList {
         }
 
         size--;
-        elements[size] = 0;
+        elements[size] = null;
 
         // reducing length of array
         if (size < elements.length / 3){
@@ -49,7 +49,7 @@ public class ArrayListADT implements AbstractList {
     }
 
     @Override
-    public int get(int index) {
+    public T get(int index) {
         if(index < 0 ||  index >= size)
         {
             throw new IndexOutOfBoundsException("Index out of bound: " + index + " out of size.");
@@ -58,13 +58,13 @@ public class ArrayListADT implements AbstractList {
     }
 
     @Override
-    public int set(int index, int element) {
+    public T set(int index, T element) {
         if(index < 0 ||  index >= size)
         {
             throw new IndexOutOfBoundsException("Index out of bound: " + index + " out of size.");
         }
 
-        int oldElement = elements[index];
+        T oldElement = elements[index];
         elements[index] = element;
         return oldElement;
     }
@@ -75,7 +75,7 @@ public class ArrayListADT implements AbstractList {
     }
 
     @Override
-    public int indexOf(int element) {
+    public int indexOf(T element) {
         for (int i = 0; i < size - 1 ; i++) {
             if (elements[i] == element) {
                 return i;
@@ -85,7 +85,7 @@ public class ArrayListADT implements AbstractList {
     }
 
     @Override
-    public boolean contains(int element) {
+    public boolean contains(T element) {
 //        for (int i = 0; i < size - 1 ; i++) {
 //            if (elements[i] == element) {
 //                return true;
@@ -130,7 +130,7 @@ public class ArrayListADT implements AbstractList {
 
 class Program {
     public static void main(String[] args) {
-        ArrayListADT intArrayList = new ArrayListADT();
+        ArrayListADT<Integer> intArrayList = new ArrayListADT<>();
         intArrayList.add(10); // 0
         intArrayList.add(20); // 1
         intArrayList.add(30); // 2
@@ -166,5 +166,28 @@ class Program {
 
         System.out.println(intArrayList);
 
+        ArrayListADT<String> stringArrayListADT = new ArrayListADT<>();
+        stringArrayListADT.add("hello");
+        stringArrayListADT.add("world");
+        stringArrayListADT.add("welcome");
+        stringArrayListADT.add("bye");
+        System.out.println(stringArrayListADT);
+
+        ArrayListADT<Book> bookArrayListADT = new ArrayListADT<>();
+        bookArrayListADT.add(new Book("Conan"));
+        bookArrayListADT.add(new Book("Greenwich Guideline"));
+        System.out.println(bookArrayListADT);
+    }
+}
+
+class Book{
+    private String title;
+    public Book(String title){
+        this.title = title;
+    }
+
+    @Override
+    public String toString(){
+        return this.title;
     }
 }

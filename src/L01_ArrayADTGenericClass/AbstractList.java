@@ -1,12 +1,12 @@
 package L01_ArrayADTGenericClass;
 
-public interface AbstractList {
-    boolean add(int element);
-    int remove(int index);
-    int get(int index);
-    int set(int index, int element);
+public interface AbstractList<T> {
+    boolean add(T element);
+    T remove(int index);
+    T get(int index);
+    T set(int index, T element);
     int size();
-    int indexOf(int element);
-    boolean contains(int element);
+    int indexOf(T element);
+    boolean contains(T element);
     boolean isEmpty();
 }
