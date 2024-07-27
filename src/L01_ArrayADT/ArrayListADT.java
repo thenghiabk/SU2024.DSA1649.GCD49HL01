@@ -3,20 +3,16 @@ package L01_ArrayADT;
 import java.util.Arrays;
 
 public class ArrayListADT implements AbstractList{
-
-
+    private static final int DEFAULT_CAPACITY = 5;
     private int[] elements;
-
     private int size = 0;
 
     public ArrayListADT(){
-        elements = new int[5];
+        elements = new int[DEFAULT_CAPACITY];
     }
 
     @Override
     public boolean add(int element) {
-
-        // increase size of array if needed
         if (size == elements.length){
             elements = Arrays.copyOf(elements, elements.length * 2);
         }
@@ -110,6 +106,25 @@ public class ArrayListADT implements AbstractList{
 
         return false;
     }
+
+    @Override
+    public String toString(){
+        // [10, 20, 30, 40, 50, 60]
+        StringBuilder results = new StringBuilder();
+        results.append("[");
+
+        for (int i = 0; i < size; i++) {
+            results.append(elements[i]);
+            if (i < size - 1){
+                results.append(", ");
+            }
+        }
+
+        results.append("]");
+
+        return results.toString();
+
+    }
 }
 
 
@@ -148,6 +163,8 @@ class Program {
         System.out.println(intArrayList.isEmpty()); // False
         System.out.println(intArrayList.indexOf(40)); // 3
         System.out.println(intArrayList.indexOf(80)); // -1
+
+        System.out.println(intArrayList);
 
     }
 }
