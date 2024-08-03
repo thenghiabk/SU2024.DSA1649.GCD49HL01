@@ -53,7 +53,7 @@ public class SinglyLinkedListADT<T> implements AbstractLinkedList<T> {
     public T removeFirst() {
         // check if stack empty
         if(isEmpty()){
-            throw new NoSuchElementException("Stack is currently empty.");
+            throw new NoSuchElementException("LinkedList is currently empty.");
         }
 
         T oldNodeValue = this.head.element;
@@ -75,7 +75,7 @@ public class SinglyLinkedListADT<T> implements AbstractLinkedList<T> {
     public T removeLast() {
         // check if stack empty
         if(isEmpty()){
-            throw new NoSuchElementException("Stack is currently empty.");
+            throw new NoSuchElementException("LinkedList is currently empty.");
         }
 
         T oldNodeValue = this.tail.element;
@@ -101,12 +101,21 @@ public class SinglyLinkedListADT<T> implements AbstractLinkedList<T> {
 
     @Override
     public T getFirst() {
-        return null;
+        // check if stack empty
+        if(isEmpty()){
+            throw new NoSuchElementException("LinkedList is currently empty.");
+        }
+
+        return this.head.element;
     }
 
     @Override
     public T getLast() {
-        return null;
+        // check if stack empty
+        if(isEmpty()){
+            throw new NoSuchElementException("LinkedList is currently empty.");
+        }
+        return this.tail.element;
     }
 
     @Override
@@ -163,6 +172,8 @@ class Program{
         System.out.println(mySinglyLinkedList.removeLast()); // 80
         System.out.println(mySinglyLinkedList.removeFirst()); // 40
 
+        System.out.println(mySinglyLinkedList.getFirst()); // 10
+        System.out.println(mySinglyLinkedList.getLast()); // 70
 
 
     }
