@@ -84,6 +84,27 @@ public class StackADT<T> implements AbstractStackADT<T> {
         // option 2
         return this.size == 0;
     }
+
+    @Override
+    public String toString(){
+        // [30, 20, 10]
+        StringBuilder results = new StringBuilder();
+        results.append("[");
+
+        Node<T> tempNode = top;
+
+        while(tempNode != null){
+            results.append(tempNode.element);
+            if(tempNode.next != null){
+                results.append(", ");
+            }
+            tempNode = tempNode.next;
+        }
+
+        results.append("]");
+
+        return results.toString();
+    }
 }
 
 class Program{
@@ -97,6 +118,8 @@ class Program{
         myStackADT.push(10);
         myStackADT.push(20);
         myStackADT.push(30);
+
+        System.out.println(myStackADT);
 
         System.out.println(myStackADT.isEmpty()); // false
 
