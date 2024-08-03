@@ -119,7 +119,7 @@ class Program{
         myStackADT.push(20);
         myStackADT.push(30);
 
-        System.out.println(myStackADT);
+        System.out.println(myStackADT); // [30, 20, 10]
 
         System.out.println(myStackADT.isEmpty()); // false
 
