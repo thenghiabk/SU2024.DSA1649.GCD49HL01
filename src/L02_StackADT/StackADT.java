@@ -47,9 +47,9 @@ public class StackADT<T> implements AbstractStackADT<T> {
 
         T oldNodeValue = this.top.element;
 
-        Node<T> nextNode = top.next;
+        Node<T> tempNode = top.next;
         this.top.next = null;
-        this.top = nextNode;
+        this.top = tempNode;
         this.size--;
 
         return oldNodeValue;

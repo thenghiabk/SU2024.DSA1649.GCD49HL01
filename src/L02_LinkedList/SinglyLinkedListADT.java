@@ -1,5 +1,7 @@
 package L02_LinkedList;
 
+import java.util.NoSuchElementException;
+
 public class SinglyLinkedListADT<T> implements AbstractLinkedList<T> {
     private class Node<T>{
         private T element;
@@ -49,12 +51,52 @@ public class SinglyLinkedListADT<T> implements AbstractLinkedList<T> {
 
     @Override
     public T removeFirst() {
-        return null;
+        // check if stack empty
+        if(isEmpty()){
+            throw new NoSuchElementException("Stack is currently empty.");
+        }
+
+        T oldNodeValue = this.head.element;
+
+        if(head == tail){
+            head = tail = null;
+        } else {
+            Node<T> tempNode = head.next;
+            this.head.next = null;
+            this.head = tempNode;
+        }
+
+        this.size--;
+
+        return oldNodeValue;
     }
 
     @Override
     public T removeLast() {
-        return null;
+        // check if stack empty
+        if(isEmpty()){
+            throw new NoSuchElementException("Stack is currently empty.");
+        }
+
+        T oldNodeValue = this.tail.element;
+
+        Node<T> tempNode = head;
+
+        if(head == tail){
+            head = tail = null;
+        } else {
+            while(tempNode.next != tail){
+                tempNode = tempNode.next;
+            }
+
+            tempNode.next = null;
+            tail = tempNode;
+        }
+
+        this.size--;
+
+
+        return oldNodeValue;
     }
 
     @Override
@@ -112,9 +154,16 @@ class Program{
 
         mySinglyLinkedList.addFirst(40);
         mySinglyLinkedList.addLast(50);
+        mySinglyLinkedList.addLast(60);
+        mySinglyLinkedList.addLast(70);
+        mySinglyLinkedList.addLast(80);
 
-        System.out.println(mySinglyLinkedList);
+        System.out.println(mySinglyLinkedList); // [40, 10, 20, 30, 50, 60, 70, 80]
 
-        System.out.println(mySinglyLinkedList.isEmpty());
+        System.out.println(mySinglyLinkedList.removeLast()); // 80
+        System.out.println(mySinglyLinkedList.removeFirst()); // 40
+
+
+
     }
 }
