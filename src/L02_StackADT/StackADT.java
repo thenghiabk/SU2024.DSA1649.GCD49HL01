@@ -4,8 +4,8 @@ import java.util.NoSuchElementException;
 
 public class StackADT<T> implements AbstractStackADT<T> {
     private class Node<T>{
-        private T element;
-        private Node<T> next;
+        private T element; // reference to the element stored at this node
+        private Node<T> next; // reference to the subsequent node in the stack
         public Node(T element){
             this.element = element;
             this.next = null;
