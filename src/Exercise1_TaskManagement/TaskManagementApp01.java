@@ -66,8 +66,8 @@ public class TaskManagementApp01 {
         displayTasks(tasks);
         System.out.println("Please enter task you want to remove: ");
         int removedTaskIdx = Integer.parseInt(scanner.nextLine());
-        tasks.remove(removedTaskIdx-1);
-        System.out.println("Task removed successfully!");
+        String removedTask = tasks.remove(removedTaskIdx-1);
+        System.out.println("Task " + removedTask + " removed successfully!");
     }
 
     private static void displayTasks( ArrayList<String> tasks ) {

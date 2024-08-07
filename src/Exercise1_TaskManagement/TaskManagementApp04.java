@@ -1,15 +1,14 @@
 package Exercise1_TaskManagement;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-class Task{
+class TaskEnhanced{
     // attributes
     private String name;
     private String priority;
 
     // constructor
-    public Task(String name, String priority){
+    public TaskEnhanced(String name, String priority){
         this.name = name;
         this.priority = priority;
     }
@@ -29,9 +28,9 @@ class Task{
 
 }
 
-public class TaskManagementApp03 {
+public class TaskManagementApp04 {
     public static void main(String[] args) {
-        ArrayList<Task> tasks = new ArrayList<>();
+        ArrayListADT<TaskEnhanced> tasks = new ArrayListADT<>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Task Management Application");
@@ -43,9 +42,9 @@ public class TaskManagementApp03 {
         //tasks.add("Watch a movie");
         //tasks.add("Hangout with friends");
 
-        tasks.add(new Task("Buy a cup of coffee", "A"));
-        tasks.add(new Task("Watch a movie", "C"));
-        tasks.add(new Task("Hangout with friends", "B"));
+        tasks.add(new TaskEnhanced("Buy a cup of coffee", "A"));
+        tasks.add(new TaskEnhanced("Watch a movie", "C"));
+        tasks.add(new TaskEnhanced("Hangout with friends", "B"));
 
         while (choice != 4) {
             displayMenu();
@@ -82,19 +81,19 @@ public class TaskManagementApp03 {
         System.out.print("Please enter a choice: ");
     }
 
-    private static void addTask( ArrayList<Task> tasks, Scanner scanner ) {
+    private static void addTask( ArrayListADT<TaskEnhanced> tasks, Scanner scanner ) {
         System.out.print("Please enter a new task: ");
         String newTaskName = scanner.nextLine();
 
         System.out.print("Please enter a task's priority: ");
         String newTaskPriority = scanner.nextLine();
 
-        tasks.add(new Task(newTaskName, newTaskPriority));
+        tasks.add(new TaskEnhanced(newTaskName, newTaskPriority));
 
         System.out.println("Task added successfully!");
     }
 
-    private static void removeTask( ArrayList<Task> tasks, Scanner scanner ) {
+    private static void removeTask( ArrayListADT<TaskEnhanced> tasks, Scanner scanner ) {
         displayTasks(tasks);
         System.out.println("Please enter task you want to remove: ");
         int removedTaskIdx = Integer.parseInt(scanner.nextLine());
@@ -102,12 +101,12 @@ public class TaskManagementApp03 {
         System.out.println("Task removed successfully!");
     }
 
-    private static void displayTasks( ArrayList<Task> tasks ) {
+    private static void displayTasks( ArrayListADT<TaskEnhanced> tasks ) {
         System.out.println("Tasks running: ");
         // System.out.println(tasks);
 
         for (int i = 0; i < tasks.size(); i++) {
-            Task task = tasks.get(i);
+            TaskEnhanced task = tasks.get(i);
 
             //System.out.println("\tTask " + (i+1) + ": " + task.getName() + ", Priority: " + task.getPriority());
             System.out.println("\t" + (i+1) + ": " + task.info());
