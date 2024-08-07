@@ -1,12 +1,10 @@
 package Exercise1_TaskManagement;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TaskManagementApp01 {
+public class TaskManagementApp02 {
     public static void main(String[] args) {
-        ArrayList<String> tasks = new ArrayList<>();
+        ArrayListADT<String> tasks = new ArrayListADT<>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Task Management Application");
@@ -17,8 +15,6 @@ public class TaskManagementApp01 {
         tasks.add("Buy a cup of coffee");
         tasks.add("Watch a movie");
         tasks.add("Hangout with friends");
-
-
 
         while (choice != 4) {
             displayMenu();
@@ -55,14 +51,14 @@ public class TaskManagementApp01 {
         System.out.print("Please enter a choice: ");
     }
 
-    private static void addTask( ArrayList<String> tasks, Scanner scanner ) {
+    private static void addTask( ArrayListADT<String> tasks, Scanner scanner ) {
         System.out.print("Please enter a new task: ");
         String newTask = scanner.nextLine();
         tasks.add(newTask);
         System.out.println("Task added successfully!");
     }
 
-    private static void removeTask( ArrayList<String> tasks, Scanner scanner ) {
+    private static void removeTask( ArrayListADT<String> tasks, Scanner scanner ) {
         displayTasks(tasks);
         System.out.println("Please enter task you want to remove: ");
         int removedTaskIdx = Integer.parseInt(scanner.nextLine());
@@ -70,7 +66,7 @@ public class TaskManagementApp01 {
         System.out.println("Task removed successfully!");
     }
 
-    private static void displayTasks( ArrayList<String> tasks ) {
+    private static void displayTasks( ArrayListADT<String> tasks ) {
         System.out.println("Tasks running: ");
         // System.out.println(tasks);
 
